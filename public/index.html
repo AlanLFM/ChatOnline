@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link type="text/css" rel="stylesheet" href="css/modal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Socket Basico</title>
+  </head>
+  <body>
+    <button id="displayNone" onclick="as()" class="modal__btn">ver sockets conectados/desconectados </button>
+
+    <div id="notificaciones"> </div>
+    <center><br>
+    <div id="salida" class="container">
+        <h1 class="h1-1">Chat Online</h1>
+      <div id="avisos">
+      </div>
+    </div>
+    <div id="container">
+      <div id="notificacioness" >
+        <input type="text" id="mensaje" placeholder="Mensaje" class="txt" required>
+        <button class="modal__btn" id="enviar" >
+          Enviar 
+        </button>
+      <ul id="not"></ul>
+        </div>
+      </div>
+
+    <div class="w3-container" id="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="modal__btn">Ingresar al chat</button>
+
+  <div id="id01" class="w3-modal">
+      <div class=modal>
+        <center><h3 class="modal__title">¿Qué usuario usarás en el chat?</h3>
+        
+        <input type="text" id="usuario" value="" placeholder="Usuario" class="txt" required>
+        <button onclick="validar()" class="modal__btn"> Entrar</button>
+        <p id="error" style="color:red;"></p>
+      </center>
+        <br>
+        <br><p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="alerta">Ingresa para poder Chatear</p>
+</center>
+    <script type="text/javascript">
+      window.onload=document.getElementById('id01').style.display='block';
+      function todos(){
+        validar();
+        a();
+
+
+      }
+      function a(){
+        document.getElementById('id01').style.display='none';
+
+      }
+      function validar(){
+        let alerta=document.getElementById("alerta");
+        let error=document.getElementById("error");
+        let boton=document.getElementById("w3-container");
+        var usuario=document.getElementById("usuario").value;
+        let bandera=Boolean(true);
+        console.log(bandera)
+        bandera=false;
+        console.log("después: " + bandera)
+        
+        console.log("El usuario es: " + usuario);
+        if(usuario==null || usuario==" "|| usuario=="")
+        {
+        error.innerHTML=("Usuario no válido");
+        window.onload=document.getElementById('id01').style.display='block';
+        }else{
+          alerta.innerHTML=(" ");
+          boton.innerHTML=(" ");
+          console.log("Usuario puesto: " +usuario)
+          bandera=false;
+        }
+      }
+      function as() {
+        console.log(":D")
+        
+  // Resetear, por si acaso has estado jugando con la otra propiedad
+  $('#notificaciones').css('visibility', 'visible');
+  
+  if( $('#notificaciones').is(":visible") ) {
+    $('#notificaciones').css('display', 'none'); 
+  } else {
+    $('#notificaciones').css('display', 'block');
+  }
+      
+    }
+    </script>
+    <script src="js/socket.io.js"></script>
+    <script src="js/logica.js" charset="utf-8"></script>
+    <script src="js/validate.js"></script>
+    
+  </body>
+</html>
